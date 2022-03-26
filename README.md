@@ -59,9 +59,18 @@ Text adventure
   
 # Features
 
-## Initializing the game, the program will randomly assign an event to each region. It could be a store where the player can buy weapons or gain health, a place where the player finds a friend, or where the player encounters a fight. (This explains coding requirements 1)
-## Integer will be used to represent the random event, and used to represent the state of the event (whether could the event be triggered, whether has the event happened, could something else happen and so on). (This explains coding requirement 2)
-## The memory used by dead characters or dumped weapons and objects will be release. During the game, the instructions and text will also be recorded and saved, so next time the game is read the text will be prompt again. (This uses dynamic memory management. coding requirement 3)
-## Game map will be saved in the form of .txt, where both the map data and the character data will be stored and read in the form of string. The prompt history will also be saved and reprinted. (loading and saving of the game. coding requirement 4)
-## Object oriented programming will be implemented and the values of the characters will be stored accordingly. (This explains coding requirement 5)
+### 1
+Initializing the game, the program will randomly assign an event to each region. It could be a store where the player can buy weapons or gain health, a place where the player finds a friend, or where the player encounters a fight. (This explains coding requirements 1)
+
+### 2
+Integer will be used to represent the random event, and used to represent the state of the event (whether could the event be triggered, whether has the event happened, could something else happen and so on). (This explains coding requirement 2)
+
+### 3
+The memory used by dead characters or dumped weapons and objects will be release. During the game, the instructions and text will also be recorded and saved, so next time the game is read the text will be prompt again. (This uses dynamic memory management. coding requirement 3)
+
+### 4
+Game map will be saved in the form of .txt, where both the map data and the character data will be stored and read in the form of string. The prompt history will also be saved and reprinted. (loading and saving of the game. coding requirement 4)
+
+### 5
+Object oriented programming will be implemented and the values of the characters will be stored accordingly. (This explains coding requirement 5)
 
