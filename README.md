@@ -14,7 +14,7 @@ Text adventure
   Whatever, a new adventure has started.
   
 # Game description:
-  //All rules mentioned below might be changed in further development.
+  All rules mentioned below might be changed in further development.
   
 ## Map setting
   There will be 49 regions that can be explored by players, which will be distributed in a 7x7 square.
