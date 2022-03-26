@@ -1,6 +1,9 @@
 # Team members
 Name: Guan Pinheng 
 UID: 3035952604
+
+Name: Zhang Shengce
+UID: 3035952721
 # Game type: 
 Text adventure
 
