@@ -9,16 +9,16 @@
 
 using namespace std;
 
-int MAP_SIZE=7;
-#define DESTION_SCOPE_SIZE_SIDE_BY (3)
-#define DESTION_SCOPE_SIZE_NEAR (5)
+int MAP_SIZE=7; //map size is 7*7
+#define DESTION_SCOPE_SIZE_SIDE_BY (3) //A 3*3 region with destination being the centre
+#define DESTION_SCOPE_SIZE_NEAR (5) //A 5*5 region with destination being the centre
 #define SEPARATER "      "
 #define PRINT_SEPARATER cout<<SEPARATER;
 #include<iostream>
 
 
 
-enum PlaySense
+enum PlaySense// There are 9 kinds of events that the player might meet when they get into a new region
 {
     PlaySense_Error = 0,
     PlaySense_1,
@@ -36,7 +36,7 @@ enum PlaySense
 
 void BattleDescription();
 
-void ClickEnterToContinue(){
+void ClickEnterToContinue(){ //Provide feeling of taking paces
     cout<<"Click Any Key to Continue ";
     getch();
     cout<<"\r";
@@ -51,8 +51,8 @@ using namespace std;
 class Player
 {
 public:
-    void goNextNode();
-    void ShowBoard();
+    void goNextNode(); //let player be able to move in the map
+    void ShowBoard(); // print a board with player's data
     void ShowPlayerBoard();
 
     //Functions of Basic Values
@@ -188,7 +188,7 @@ public:
     void Enemy4MakeMove(Player &player);
     void Enemy5MakeMove(Player &player);
     
-    void Regular_EnemyMakeMove(Player &player);
+    void Regular_EnemyMakeMove(Player &player); // different kinds of enermies
 	void ShieldMaster_EnemyMakeMove(Player &player);//Does a lot of shield
 	void Mage_EnemyMakeMove(Player &player);//Does a lot of magic
 	void Warrior_EnemyMakeMove(Player &player);//Does a lot of attack
@@ -262,11 +262,11 @@ class BattleFieldMap
 public:
     BattleFieldMap(Player*);
     void showSelf();
-    bool isPointOnDestion(int x, int y);//åˆ¤æ–­ä¸€ä¸ªç»™å®šç‚¹æ˜¯ä¸æ˜¯åœ¨ç›®çš„åœ°
-    bool isPointNearDest(int x, int y);//åˆ¤æ–­ä¸€ä¸ªç»™å®šç‚¹æ˜¯ä¸æ˜¯åœ¨ç›®çš„åœ°çš„3*3èŒƒå›´å†…
-    bool isPointSideByDest(int x, int y);//åˆ¤æ–­ä¸€ä¸ªç»™å®šç‚¹æ˜¯ä¸æ˜¯åœ¨ç›®çš„åœ°çš„5*5èŒƒå›´å†…
-    void randomDestion();//éšæœºç›®çš„åœ°å€
-    bool checkPlayerPostion();//æ£€æŸ¥çŽ©å®¶æ˜¯ä¸æ˜¯åœ¨ç›®çš„åœ°äº†ï¼Œè‹¥åœ¨è¿”å›žtrue(çŽ©å®¶èµ¢äº†)ï¼Œè‹¥ä¸åœ¨è¿”å›žfalseï¼Œå¹¶æ‰“å°æç¤ºåœ¨é™„è¿‘è¿˜åœ¨çœ¼å‰
+    bool isPointOnDestion(int x, int y);// if the player reaches the destination
+    bool isPointNearDest(int x, int y);// if the player reaches the 3*3 square surrounding the destination
+    bool isPointSideByDest(int x, int y);//if the player reaches the 5*5 square surrounding the destination
+    void randomDestion();// generate a random destination
+    bool checkPlayerPostion();
     //int m_player_x;
     //int m_player_y;
     int m_destion_x;
@@ -275,7 +275,7 @@ public:
 };
 
 
-int EventGenerator(){
+int EventGenerator(){ //Generate a random event, different events have different probability.
 	int RandIndex;
     srand(unsigned(time(0)));
     RandIndex=rand() % 100 + 1;
@@ -308,7 +308,7 @@ int EventGenerator(){
 	}
 }
 
-
+// enermy moves in battle events
 void Noob_Enemy(Player &enemy,int EnemyLevel){//denotes increment on all the values(EnemyLevel:1-3
 	enemy.ChangeName("Noob");
 	//Health
@@ -348,7 +348,7 @@ void Player::Noob_EnemyMakeMove(Player &player){
 	cout<<endl<<"CHOICE of "<<Name<<":"<<"Your enemy choose \""<<Abilities[Move-1]<<"\""<<endl<<endl<<endl;
 	
 }
-
+// different enermies and their baisc value depends on types and levels
 void ShieldMaster_Enemy(Player &enemy,int EnemyLevel){
 	enemy.ChangeName("Shield Master");
 	//Health
@@ -949,7 +949,7 @@ int RandEnemyLevel(){
 		return 3;
 	}
 }
-int ENEMY_GENERATOR(Player &enemy,int Level){
+int ENEMY_GENERATOR(Player &enemy,int Level){  //Generate different types of enemy and levels.
 	int Type=RandEnemyType();
 	//1 for Noob, 2 for Warrior, 3 for Shield Master, 4 for Regular, 5 for Tank, 6 for Mage
 	//    30%   ,    20%       ,       15%          ,      15%     ,      10%  ,     10%
@@ -977,7 +977,7 @@ int ENEMY_GENERATOR(Player &enemy,int Level){
 	}
 	return Type;
 }
-void ENEMY_MAKE_MOVE(Player &enemy,Player &player,int Type){
+void ENEMY_MAKE_MOVE(Player &enemy,Player &player,int Type){ //enemy's operation during battle
 	if(Type==1){
 		enemy.Noob_EnemyMakeMove(player);
 	}
@@ -1057,7 +1057,7 @@ void operatePlayer_Battle(Player &player){
 	}
 	
 }
-
+// random adjectives and objectives to use in random events. Increase event diversty.
 string RandColour(){
 	srand(unsigned(time(0)));
 	string Colour[10]={"RED","BLUE","YELLOW","PURPLE","PINK","WHITE","GREEN","ORANGE","GREY","GROWN"};
@@ -1076,7 +1076,7 @@ string RandObj(){
 	"MUSHROOM","SOAP","BANANA","PINEAPPLE","ROCK","FISH","FRENCH FRIES","APPLE","NOSE","SQUAD",};
 	return Odj[rand()%20];
 }
-
+// non-battle events list
 void operatePlayer_1_choosefate(Player& player)
 {
  srand(unsigned(time(0)));
@@ -1301,7 +1301,7 @@ void operatePlayer_7_choosefate2(Player& player)
         cout<<"It will be always one of the choices to leave safely."<<endl;
     }
 }
-void operatePlayer_8_gemtrade(Player& player)
+void operatePlayer_8_gemtrade(Player& player) // trading, spend gems in order to get abilities
 {
 	srand(unsigned(time(0)));
 	string move;
@@ -1400,6 +1400,7 @@ void operatePlayer_8_gemtrade(Player& player)
 		cout<<"You Leave The Place, Nothing Happens"<<endl<<endl;
 	}
 }
+// point to the certain event with randomly generated int sense 
 bool operatePlayer(Player& player, int sense)
 {
     switch (sense)
@@ -1460,27 +1461,27 @@ void InitPlayer(Player &player);
 
 int main()
 {
-    int RoundNum=1;
+    int RoundNum=1; //record round number
     
     Player player;
     
-    ReadFile(player);
+    ReadFile(player); //read the saves
     
     BattleFieldMap map(&player);
     
-    map.randomDestion();
+    map.randomDestion(); //generate random destination
     
     //BattleDescription();
     
-    player.ShowBoard();
+    player.ShowBoard(); // print board with player's status
     
     ClickEnterToContinue();
 
     //Round Begin
-    bool iswin;
+    bool iswin; //check if player wins
     int sense;
-    map.showSelf();
-    while(player.getHealth()>0)
+    map.showSelf(); //print map, show the player's position
+    while(player.getHealth()>0) //while player is alive
     {
         srand(unsigned(time(0)));
         sense = EventGenerator();//random event
@@ -1492,13 +1493,13 @@ int main()
         cout<<endl<<endl;
         iswin = map.checkPlayerPostion();//check if win
         cout<<endl<<endl;
-        ClickEnterToContinue();
+        ClickEnterToContinue();//pause
         
-        if(iswin)
+        if(iswin)//chekc if player wins
         {
             break;
         }
-        ofstream fout;//
+        ofstream fout;// save the game in a file
         fout.open("playerstatus.txt");
         if (fout.fail()){
             cout<<"Error in file opening!"
@@ -1617,7 +1618,7 @@ int main()
 
 
 /////////////////////////////////////////////////////////////////////////
-
+// when players are first to the game, create their own character.
 void InitPlayer(Player &player){
 	string indicator;
 	bool done=false;
@@ -1625,7 +1626,7 @@ void InitPlayer(Player &player){
 	cin>>indicator;
 	player.ChangeName(indicator);
 	cout<<endl;
-	cout<<"What's the Game Difficulty You Want (normal is suggested)"<<endl;
+	cout<<"What's the Game Difficulty You Want (normal is suggested)"<<endl;  //different game mod, more fun and challenge
 	cout<<"(difficulty from low to high: easy,simple,normal,medium,hard,hell,impossible)"<<endl;
 	cout<<"Please Input: ";
 	cin>>indicator;
@@ -1742,7 +1743,7 @@ void InitPlayer(Player &player){
 	player.ChangeKnowUpgradeWeapon();
 }
 
-
+// read the previous saves to continue with early games
 void ReadFile(Player &player){
 	string indicator;
     cout<<endl<<endl<<"Do You Want To Continue From Previous Game Record?"<<endl<<endl;
@@ -1813,7 +1814,7 @@ void ReadFile(Player &player){
 }
 
 
-
+// movement of players
 void Player::goNextNode()
 {
     char move_direction = '0';
@@ -1962,6 +1963,8 @@ void Player::goNextNode()
         }
     }
 }*/
+//the skills and ability that player can use in battle
+// orders to take operations
 
 void Player::PlayerMakeMove(){
     int MoveIndex;
@@ -2205,7 +2208,7 @@ void Player::EnemyCarryMove(Player &player){
 }
 
 
-//New Program Begins Here
+//print the status of player
 void Player::ShowBoard(){
     cout<<"--------- "<<Name<<"---"<<"Health: "<<Health<<" ---------"<<"  Gem:"<<NumofGem;
     cout<<endl<<endl;
@@ -2239,7 +2242,7 @@ void Player::ShowBoard(){
 }
 
 //-----MOVES-----
-
+//if player used up all the energy, you can choose to use magic by costing health
 void Player::DrawEnergy(){
     if(Move==3){
         Energy-=MagicAttackCost;
@@ -2270,7 +2273,7 @@ void Player::DrawEnergy(){
 
 //-----PLAYER MOVES-----
 
-
+//situations when player and enemy attack each other
 void Player::PlayerAttack(Player &enemy){
     if(enemy.getMove()==1){
         if(AttackDamage>enemy.getAttackDamage()){
@@ -2299,7 +2302,7 @@ void Player::PlayerAttack(Player &enemy){
         enemy.IncreaseHealth(-AttackDamage);
     }
 }
-
+// when sheild is used, it rebounds damage
 void Player::PlayerShield(Player &enemy){
     if(enemy.getMove()==1){
         cout<<"Your enemy attackes, you rebound the ATTACK"<<endl<<endl;
@@ -2307,7 +2310,7 @@ void Player::PlayerShield(Player &enemy){
         enemy.IncreaseHealth(-enemy.getAttackDamage());
     }
 }
-
+//spend energy casting powerfull spells
 void Player::PlayerMagicAttack(Player &enemy){
     if(enemy.getMove()==6){
         cout<<"Your enemy counters your magic"<<endl<<endl;
@@ -2318,7 +2321,7 @@ void Player::PlayerMagicAttack(Player &enemy){
         enemy.IncreaseHealth(-MagicAttackDamage);
     }
 }
-
+// not able to move for a round
 void Player::PlayerFreeze(Player &enemy){
     if(enemy.getMove()==6){
         cout<<"Your enemy counters your magic"<<endl<<endl;
@@ -2330,7 +2333,7 @@ void Player::PlayerFreeze(Player &enemy){
         enemy.ChangeFreezed();
     }
 }
-
+// upgrade your damage of attack with magic
 void Player::PlayerUpgradeWeapon(Player &enemy){
     if(enemy.getMove()==6){
         cout<<"Your enemy counters your magic"<<endl<<endl;
@@ -2347,7 +2350,7 @@ void Player::PlayerUpgradeWeapon(Player &enemy){
 void Player::PlayerCounterMagic(Player &enemy){
     //~
 }
-
+// drink potions to recover from injuries
 void Player::PlayerDrinkHealPotion(Player &enemy){
     if(enemy.getMove()==1 || enemy.getMove()==3){
         cout<<"Your enemy attacks you, Heal Potion Bottle CRASHES"<<endl<<endl;
@@ -2463,7 +2466,7 @@ void Player::EnemyDrinkEnergyPotion(Player &player){
 
 
 
-
+// Explain how to give orders to the character
 void BattleDescription(){
     cout<<"You and your enemy take moves at the same time, both of you don't know your opponent's move."<<endl;
     cout<<"Each round both of you can only take one move. The following are some of the moves you can take, input the number to take the move."<<endl;
@@ -2803,7 +2806,7 @@ BattleFieldMap::BattleFieldMap(Player* pplyer)
     m_destion_x = 3;
     m_destion_y = 3;
 }
-
+// change the x-axis and y-axis to move to new region
 void BattleFieldMap::showSelf()
 {
     cout<<"battle field map:\n"<<endl;
@@ -2847,7 +2850,7 @@ bool BattleFieldMap::isPointOnDestion(int x, int y)//destination
     return false;
 }
 
-bool BattleFieldMap::isPointNearDest(int x, int y)//inside a square of 9*9, while the destination is the centre
+bool BattleFieldMap::isPointNearDest(int x, int y)//inside a square of 5*5, while the destination is the centre
 {
     if(m_destion_x - DESTION_SCOPE_SIZE_NEAR + 1 <= x &&  x <= m_destion_x + DESTION_SCOPE_SIZE_NEAR - 1
                         && m_destion_y - DESTION_SCOPE_SIZE_NEAR + 1 <= y &&  y <= m_destion_y + DESTION_SCOPE_SIZE_NEAR - 1)
@@ -2869,9 +2872,9 @@ bool BattleFieldMap::isPointSideByDest(int x, int y)//3*3 square
     return false;
 }
 
-bool BattleFieldMap::checkPlayerPostion()
+bool BattleFieldMap::checkPlayerPostion()// where are you, adventurer?
 {
-    if(isPointOnDestion(m_pplayer->x, m_pplayer->y))
+    if(isPointOnDestion(m_pplayer->x, m_pplayer->y))// when you get to the destination
     {
         cout<<"You find your teammates."<<endl;
         cout<<"Thank God! All of you guys have made it."<<endl;
@@ -2879,16 +2882,16 @@ bool BattleFieldMap::checkPlayerPostion()
     }
     else if(isPointSideByDest(m_pplayer->x, m_pplayer->y))
     {
-        cout<<"The voice is just next to you."<<endl;
+        cout<<"The voice is just next to you."<<endl;// close enough to hear your teammates
     }
     else if(isPointNearDest(m_pplayer->x, m_pplayer->y))
     {
-        cout<<"A familiar voice is calling from far away."<<endl;
+        cout<<"A familiar voice is calling from far away."<<endl;// near your teammates
     }
     return false;
 }
 
-void BattleFieldMap::randomDestion()
+void BattleFieldMap::randomDestion()//hide the destination at least 5 nodes away from you
 {
     srand(unsigned(time(0)));
     m_destion_x=rand() % (MAP_SIZE - 5) + 1 + 5 - 1;
