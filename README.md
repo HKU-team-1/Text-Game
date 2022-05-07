@@ -8,59 +8,52 @@ UID: 3035952721
 Text adventure
 
 # Game background: 
-  You are an adventurer who are exploring an unknown forest at the very edge of the world. 
-  A storm came and the last thing you remembered before you passed out was a giant wave of flood water.
-  When you woke up, you found yourself was lying somewhere underground and all your teammates were missing.
-  You knew that staying where you woke up might be a sensible idea to meet with your teammates again.
-  However, you heard an unclear voice that is calling your name and you could not help your curiosity to follow the voice.
-  Was the voice from your teammates or something else?
-  Whatever, a new adventure has started.
+  You are an adventurer who are exploring an unknown forest at the very edge of the world with your reliable teammates. 
+  An unexpected storm created a wild flood that took you away from your teammates.
+  When you woke up, you found yourself was lying somewhere in the deep forest lonely.
+  You need to survive in every unpredictable situation and you must find your teammates to go home.
+  Well, it is exactly your daily life style, my great adventurer.
   
 # Game description:
-  All rules mentioned below might be changed in further development.
   
 ## Map setting
-  There will be 49 regions that can be explored by players, which will be distributed in a 7x7 square.
-  The birth point of players will always be the region at centre of the square. 
-  The region with source of voice will be generated randomly at least 4 regions away from the centre.
-  An injured teammate will be randomly generated on the edge (the frame of the square).
-  
-## Win/pass the game
-  Win: Find the injured teammate and gather with everyone at the source of voice.
-  Pass: Gather with survivors at the source of voice.
-  
+  There will be 169 regions that can be explored by players, which will be distributed in a 13x13 square.
+  The birth point of players will always be the region at left bottom of the square. 
+  The destination The region with source of voice will be generated randomly at least 5 regions away from the centre.
+   
+## How to win the game
+  Win: Find your teammates at the destination node.
+
 ## Movement
-  Players need to type commands such as 'Go North','Go West' to move to next region.
-  After each movement, there will be sentences to descibe the new region. 
-  It includes description of the environment, hints and events.
+  Players need to type commands such as 'W', 'A', 'S', 'D' to move to next region.
   
 ## Hints for voice source 
-  After each movement, there will be sentences printed on the screen to state the distance between the player and the voice.
-  "The voice calling you name becomes weaker/larger/disappears/is so close to you/is right here."
-  The players should plan their route according to these instructions and find the source at the end.
-  
-## Hints for the injured teammate
-  When the player gets closed to the injured teammates (with a distance within 2 regions), there will be sentences printed on the screen.
-  "That is Iris' bottle! She has been here. God bless her."/"The cloth has the same color as Sam's shirt! Hope he is fine"
-  The players should search nearby regions to find their lost teammate in order to actually win the game.
+  If you have get close enough to the destination. You will hear voice of your teammates.
+  When you get in a square of 9x9 (destination as the centre). You will see this hint:
+  "A familiar voice is calling from far away."
+  When you get in a square of 5x5 (destination as the centre). You will see this hint:
+  "The voice is just next to you."
+  The players should plan their route according to these instructions and find the teammates at the destination.
   
 ## Events
-  Except the birth region, players will meet random events when they move to a new region.
-  These events require the players to 'fight' or 'decide'.
+  Players will always meet random events when they move to a region.
+  These events require the players to fight with enermies, get buff or debuff and make their own choice for their fate.
   
-###### Fight
+###### Fight with enermy
   In a 'fight' event, the players will meet a random opposed npc and the players need to win the fight in order to move to next region.
   For current design, the fight will be random games such as 'guessing a number','rock paper scissors' and so on.
   Each player has 3 lives, for each lose of a fight players lose one life and they fail when lives are used up.
   
-###### Decide
-  In a 'decide' event, the players need to make decisions for the situation they meet to move to next region.
-  The result will differ according to players' choices, which might be buff(gain one life), debuff(lose one life), tools(help players win the 'fight') or even finding a hidden opposed npc.
+###### Non-battle events
+  Some events may give you buff or debuff as soon as you get to a new region.
+  In this case, your fate depends on our random functions. It may save you when you are dying or help you to take your last breath.
+  Some events ask you to choose from several choices. 
+  In this case, your fate depends on yourself. If you make wise choice, you can be well benefited while on the other hand you may get some serious debuff that keeps you away from success. Fortunately, there is always a choice to run away.
   
 # Features
 
 ### 1
-Initializing the game, the program will randomly assign an event to each region. It could be a store where the player can buy weapons or gain health, a place where the player finds a friend, or where the player encounters a fight. (This explains coding requirements 1)
+Initializing the game, the program will randomly assign a certain destination on the map. When the player moves to a new region, they will meet random events. It could be a statue where the player can get magic spells by sacrificing enermy's soul (gems), where the player encounters a fight. (This explains coding requirements 1) and so on.
 
 ### 2
 Integer will be used to represent the random event, and used to represent the state of the event (whether could the event be triggered, whether has the event happened, could something else happen and so on). (This explains coding requirement 2)
