@@ -1,0 +1,35 @@
+6
+4
+D
+1
+569
+1000
+140
+Attack
+Shield
+0
+60
+100
+Freeze
+Fire Ball
+Enchant Weapon
+Counter Magic
+0
+70
+5
+0
+5
+3
+5
+1
+20
+1
+1
+1
+0
+0
+0
+0
+1
+1
+140
