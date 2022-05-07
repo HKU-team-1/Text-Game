@@ -66,12 +66,12 @@ Text adventure
   i.e. your attack is 15, your enemy's 9, then you cause 6 attack to your enemy)
   
   There's 6 Kinds of Enemies:
-  Noob: Weakest Creature, only know how to attack and shield =_=
-  Shield Master: Some creature that really likes to shield...
-  Monster: Regular enemy, balanced moves.
-  Warrior: warrior attacks a lot, and has considerable health.
-  Giant: Giant has high health, and thier damage are also not low!
-  Mage: Powerful Creature with high energy. But they have low health. 
+  1. Noob: Weakest Creature, only know how to attack and shield =_=
+  2. Shield Master: Some creature that really likes to shield...
+  3. Monster: Regular enemy, balanced moves.
+  4. Warrior: warrior attacks a lot, and has considerable health.
+  5. Giant: Giant has high health, and thier damage are also not low!
+  6. Mage: Powerful Creature with high energy. But they have low health. 
   
   There are also 3 levels of enemies, so there are 18 kinds of battle npc's in this game.
  
