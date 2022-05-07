@@ -791,11 +791,11 @@ void operatePlayer_Battle(Player &player){
 	
 	if(player.getHealth()<=0){
 		cout<<endl<<endl;
-		cout<<"YOU DIED ( T©nT )"<<endl<<endl;
+		cout<<"YOU DIED ( TÂ©nT )"<<endl<<endl;
 	}
 	else{
 		cout<<endl<<endl;
-		cout<<"YOU WIN !!! (¡«£þ¨Œ£þ)¡«"<<endl<<endl;
+		cout<<"YOU WIN !!! (Â¡Â«Â£Ã¾Â¨ÂŒÂ£Ã¾)Â¡Â«"<<endl<<endl;
 		cout<<"You get "<<enemy.getNumofGem()<<" Gems!"<<endl<<endl;
 		player.ChangeNumofGem(player.getNumofGem()+enemy.getNumofGem());
 		if(player.getFreezed()==true){
@@ -1582,7 +1582,7 @@ void Tutorial(Player &player){
 	ClickEnterToContinue();
 	cout<<"You hear raven caws. And then you hear some creepy groan beside you."<<endl<<endl;
 	ClickEnterToContinue();
-	cout<<"You don¡¯t feel right"<<endl<<endl;
+	cout<<"You donÂ¡Â¯t feel right"<<endl<<endl;
 	ClickEnterToContinue();
 	cout<<"\"I have to leave here now!\""<<endl<<endl;
 	cout<<"LEAVE THIS PLACE AND FIND YOUR TEAMMATES !!!"<<endl<<endl;
