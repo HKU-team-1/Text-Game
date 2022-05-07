@@ -9,9 +9,9 @@
 
 using namespace std;
 
-int MAP_SIZE=7; //地图大小
-#define DESTION_SCOPE_SIZE_SIDE_BY (3) //提示就在眼前的范围大小
-#define DESTION_SCOPE_SIZE_NEAR (5) //提示靠近了的范围大小
+int MAP_SIZE=7;
+#define DESTION_SCOPE_SIZE_SIDE_BY (3)
+#define DESTION_SCOPE_SIZE_NEAR (5)
 #define SEPARATER "      "
 #define PRINT_SEPARATER cout<<SEPARATER;
 #include<iostream>
@@ -262,11 +262,11 @@ class BattleFieldMap
 public:
     BattleFieldMap(Player*);
     void showSelf();
-    bool isPointOnDestion(int x, int y);//判断一个给定点是不是在目的地
-    bool isPointNearDest(int x, int y);//判断一个给定点是不是在目的地的3*3范围内
-    bool isPointSideByDest(int x, int y);//判断一个给定点是不是在目的地的5*5范围内
-    void randomDestion();//随机目的地址
-    bool checkPlayerPostion();//检查玩家是不是在目的地了，若在返回true(玩家赢了)，若不在返回false，并打印提示在附近还在眼前
+    bool isPointOnDestion(int x, int y);//åˆ¤æ–­ä¸€ä¸ªç»™å®šç‚¹æ˜¯ä¸æ˜¯åœ¨ç›®çš„åœ°
+    bool isPointNearDest(int x, int y);//åˆ¤æ–­ä¸€ä¸ªç»™å®šç‚¹æ˜¯ä¸æ˜¯åœ¨ç›®çš„åœ°çš„3*3èŒƒå›´å†…
+    bool isPointSideByDest(int x, int y);//åˆ¤æ–­ä¸€ä¸ªç»™å®šç‚¹æ˜¯ä¸æ˜¯åœ¨ç›®çš„åœ°çš„5*5èŒƒå›´å†…
+    void randomDestion();//éšæœºç›®çš„åœ°å€
+    bool checkPlayerPostion();//æ£€æŸ¥çŽ©å®¶æ˜¯ä¸æ˜¯åœ¨ç›®çš„åœ°äº†ï¼Œè‹¥åœ¨è¿”å›žtrue(çŽ©å®¶èµ¢äº†)ï¼Œè‹¥ä¸åœ¨è¿”å›žfalseï¼Œå¹¶æ‰“å°æç¤ºåœ¨é™„è¿‘è¿˜åœ¨çœ¼å‰
     //int m_player_x;
     //int m_player_y;
     int m_destion_x;
@@ -1042,11 +1042,11 @@ void operatePlayer_Battle(Player &player){
 	
 	if(player.getHealth()<=0){
 		cout<<endl<<endl;
-		cout<<"YOU DIED ( T�nT )"<<endl<<endl;
+		cout<<"YOU DIED ( T©nT )"<<endl<<endl;
 	}
 	else{
 		cout<<endl<<endl;
-		cout<<"YOU WIN !!! (��������)��"<<endl<<endl;
+		cout<<"YOU WIN !!! (¡«£þ¨Œ£þ)¡«"<<endl<<endl;
 		cout<<"You get "<<enemy.getNumofGem()<<" Gems!"<<endl<<endl;
 		player.ChangeNumofGem(player.getNumofGem()+enemy.getNumofGem());
 		if(player.getFreezed()==true){
