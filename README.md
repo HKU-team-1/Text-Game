@@ -61,8 +61,8 @@ Text adventure
   7. Drink Heal Potion(Restore energy equals to the "heal power")
   8. Drink Energy Potion(Fully restore your energy)
   (Special cases: 
-  1. if your opponent attacks you when you are drinking potions, then your potion bottle crashes, i.e. the potion drinking is disabled
-  2. if both of you attacks, the one with higher attack will cause a damage -which equals to the exceeding part of it.
+  (1)if your opponent attacks you when you are drinking potions, then your potion bottle crashes, i.e. the potion drinking is disabled
+  (2)if both of you attacks, the one with higher attack will cause a damage -which equals to the exceeding part of it.
   i.e. your attack is 15, your enemy's 9, then you cause 6 attack to your enemy)
   
   There's 6 Kinds of Enemies:
