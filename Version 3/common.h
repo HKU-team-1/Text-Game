@@ -11,11 +11,14 @@
 using namespace std;
 
 #define MAP_SIZE (13)
+//The Size of the map
 #define DESTION_SCOPE_SIZE_SIDE_BY (3)
 #define DESTION_SCOPE_SIZE_NEAR (5) 
+//Correction:Destination
 #define SEPARATER "      "
 #define PRINT_SEPARATER cout<<SEPARATER;
 #include<iostream>
+//the following is used for representing the events
 enum PlaySense
 {
     PlaySense_Error = 0,
@@ -31,6 +34,7 @@ enum PlaySense
     PlaySense_X,
 };
 
+//The following are the player's data
 class Player
 {
 public:
@@ -172,11 +176,11 @@ public:
     void Enemy5MakeMove(Player &player);
     
     void Regular_EnemyMakeMove(Player &player);
-	void ShieldMaster_EnemyMakeMove(Player &player);//Does a lot of shield
-	void Mage_EnemyMakeMove(Player &player);//Does a lot of magic
-	void Warrior_EnemyMakeMove(Player &player);//Does a lot of attack
-	void Noob_EnemyMakeMove(Player &player); //noob
-	void Tank_EnemyMakeMove(Player &player);
+    void ShieldMaster_EnemyMakeMove(Player &player);//Does a lot of shield
+    void Mage_EnemyMakeMove(Player &player);//Does a lot of magic
+    void Warrior_EnemyMakeMove(Player &player);//Does a lot of attack
+    void Noob_EnemyMakeMove(Player &player); //noob
+    void Tank_EnemyMakeMove(Player &player);
 
     //Player Carry Move
     void PlayerCarryMove(Player &enemy);
@@ -222,6 +226,7 @@ private:
     int HealPower=45;
 
     //Ability Availability
+	//This shows whether the ability has been unlocked
     bool KnowAttack=true;
     bool KnowShield=true;
     bool KnowMagicAttack=true;
@@ -240,7 +245,7 @@ public:
 
 };
 
-
+//Data of the map
 class BattleFieldMap
 {
 public:
@@ -269,7 +274,7 @@ void ClickEnterToContinue(){
 
 using namespace std;
 
-
+//Generates events in certain probability
 int EventGenerator(){
 	int RandIndex;
     srand(unsigned(time(0)));
@@ -303,7 +308,7 @@ int EventGenerator(){
 	}
 }
 
-
+//Enemy data of Noob type
 void Noob_Enemy(Player &enemy,int EnemyLevel){//denotes increment on all the values(EnemyLevel:1-3
 	srand(unsigned(time(0)));
 	int NameIndex;
@@ -350,6 +355,7 @@ void Player::Noob_EnemyMakeMove(Player &player){
 	
 }
 
+//Enemy Data of Shield Master type
 void ShieldMaster_Enemy(Player &enemy,int EnemyLevel){
 	srand(unsigned(time(0)));
 	string Names[18]={"Mask Goblin","Mask Skeloton","Tar Creeper","Dark Dwarf","Sludge Belcher","Rotten Shield Smith",
@@ -422,6 +428,7 @@ void Player::ShieldMaster_EnemyMakeMove(Player &player){
 	
 }
 
+//Enemy data of regular enemy
 void Regular_Enemy(Player &enemy,int EnemyLevel){
 	srand(unsigned(time(0)));
 	string Names[11]={"Twilight Drake","Faceless Manipulator","Azure Drake","Ice Revenant","Forest Wyrm","Boulderfist Ogre",
@@ -549,6 +556,7 @@ void Player::Regular_EnemyMakeMove(Player &player){
     cout<<endl<<"CHOICE of "<<Name<<":"<<"Your enemy choose \""<<Abilities[Move-1]<<"\""<<endl<<endl<<endl;
 }
 
+//Enemy Data of Mage Type
 void Mage_Enemy(Player &enemy,int EnemyLevel){
 	srand(unsigned(time(0)));
 	string Names[11]={"Mage","Witch","Sorceress","Sorcerer","Bloodmage","Doomsayer","Crazed Alchemist","Pyromancer",
@@ -678,6 +686,7 @@ void Player::Mage_EnemyMakeMove(Player &player){
     cout<<endl<<"CHOICE of "<<Name<<":"<<"Your enemy choose \""<<Abilities[Move-1]<<"\""<<endl<<endl<<endl;
 }
 
+//Enemy Data of Warrior Type
 void Warrior_Enemy(Player &enemy,int EnemyLevel){
 	srand(unsigned(time(0)));
 	string Names[11]={"Chillwind Yeti","Bloodhoof","Mossy Horror","Storm Watcher","Twin Tyrant","Corridor Creeper",
@@ -804,6 +813,7 @@ void Player::Warrior_EnemyMakeMove(Player &player){
     cout<<endl<<"CHOICE of "<<Name<<":"<<"Your enemy choose \""<<Abilities[Move-1]<<"\""<<endl<<endl<<endl;
 }
 
+//Enemy Data of Tank Type
 void Tank_Enemy(Player &enemy,int EnemyLevel){
 	srand(unsigned(time(0)));
 	int NameIndex;
@@ -930,6 +940,7 @@ void Player::Tank_EnemyMakeMove(Player &player){
     cout<<endl<<"CHOICE of "<<Name<<":"<<"Your enemy choose \""<<Abilities[Move-1]<<"\""<<endl<<endl<<endl;
 }
 
+//Random Enemy Type, with certain probability
 int RandEnemyType(){
 	//1 for Noob, 2 for Warrior, 3 for Shield Master, 4 for Regular, 5 for Tank, 6 for Mage
 	//    30%   ,    20%       ,       15%          ,      15%     ,      10%  ,     10%
@@ -996,6 +1007,8 @@ int ENEMY_GENERATOR(Player &enemy,int Level){
 	}
 	return Type;
 }
+
+//In the battle, when Enemy is Making Move, this function is used
 void ENEMY_MAKE_MOVE(Player &enemy,Player &player,int Type){
 	if(Type==1){
 		enemy.Noob_EnemyMakeMove(player);
@@ -1021,6 +1034,7 @@ void ENEMY_MAKE_MOVE(Player &enemy,Player &player,int Type){
 	}
 }
 
+//The event is battle type- where player battles
 void operatePlayer_Battle(Player &player){
 	srand(unsigned(time(0)));
 	Player enemy;
@@ -1061,11 +1075,11 @@ void operatePlayer_Battle(Player &player){
 	
 	if(player.getHealth()<=0){
 		cout<<endl<<endl;
-		cout<<"YOU DIED ( T©nT )"<<endl<<endl;
+		cout<<"YOU DIED ( TÂ©nT )"<<endl<<endl;
 	}
 	else{
 		cout<<endl<<endl;
-		cout<<"YOU WIN !!! (¡«£þ¨Œ£þ)¡«"<<endl<<endl;
+		cout<<"YOU WIN !!! (Â¡Â«Â£Ã¾Â¨ÂŒÂ£Ã¾)Â¡Â«"<<endl<<endl;
 		cout<<"You get "<<enemy.getNumofGem()<<" Gems!"<<endl<<endl;
 		player.ChangeNumofGem(player.getNumofGem()+enemy.getNumofGem());
 		if(player.getFreezed()==true){
@@ -1096,6 +1110,7 @@ string RandObj(){
 	return Odj[rand()%20];
 }
 
+//Choose fate means player is making a choice in the event
 void operatePlayer_1_choosefate(Player& player){
 	srand(unsigned(time(0)));
 	char fatechoice='0';
@@ -1205,7 +1220,7 @@ void operatePlayer_1_choosefate(Player& player){
         }
 }
 
-
+//good fate means there is no choice need to be made, and the player directly get good fate
 void operatePlayer_2_goodfate1(Player& player)
 {
     cout<<"There is "<<RandColour()<<" light in front of you."<<endl<<endl;
@@ -1242,6 +1257,7 @@ void operatePlayer_4_goodfate3(Player& player)
 
 }
 
+//bad fate is contrary to good fate
 void operatePlayer_5_badfate1(Player& player)
 {
   srand(unsigned(time(0)));
@@ -1320,6 +1336,8 @@ void operatePlayer_7_choosefate2(Player& player)
         cout<<"It will be always one of the choices to leave safely."<<endl;
     }
 }
+
+//This is the event where the player gets to trade magic with gems
 void operatePlayer_8_gemtrade(Player& player)
 {
 	srand(unsigned(time(0)));
@@ -1419,6 +1437,8 @@ void operatePlayer_8_gemtrade(Player& player)
 		cout<<"You Leave The Place, Nothing Happens"<<endl<<endl;
 	}
 }
+
+//this is where the events are triggered
 bool operatePlayer(Player& player, int sense)
 {
     switch (sense)
@@ -1470,7 +1490,7 @@ bool operatePlayer(Player& player, int sense)
 
 
 
-
+//where player make move in the battle
 void Player::PlayerMakeMove(){
     int MoveIndex;
     bool Done=false;
@@ -1529,6 +1549,7 @@ void Player::PlayerMakeMove(){
     Sleep(200);
 }
 
+//where enemy 1 type make move in the battle
 void Player::Enemy1MakeMove(Player &player){
     int RandMove;
     srand(unsigned(time(0)));
@@ -1639,7 +1660,7 @@ void Player::Enemy1MakeMove(Player &player){
 }
 
 
-//Player Carry Move
+//Player Carry Move(In make move they choose a move, in carry move, the move is triggered)
 void Player::PlayerCarryMove(Player &enemy){
     DrawEnergy();
     Sleep(100);
