@@ -23,37 +23,36 @@ void Tutorial(Player &player);
 
 int main()
 {
-	cout<<MAP_SIZE<<endl<<endl;
     int RoundNum=1;
     bool SkipTutorial; 
     Player player;
     
-    SkipTutorial=ReadFile(player);
+    SkipTutorial=ReadFile(player);//Use ReadFile to aske player whether they need to use previous record, and see if they need tutorial
     
     if(SkipTutorial==false){
-    	Tutorial(player);
+    	Tutorial(player);//Carry tutorial
 	}
     
-    BattleFieldMap map(&player);
+    BattleFieldMap map(&player);//initialize battle map
     
-    map.randomDestion();
+    map.randomDestion();//Obviously, he spells destination wrongly
     
     //BattleDescription();
     
-    player.ShowBoard();
+    player.ShowBoard();//show player status
     
     ClickEnterToContinue();
 
     //Round Begin
-    bool iswin;
-    int sense;
-    map.showSelf();
-    while(player.getHealth()>0)
+    bool iswin;//see whether wins
+    int sense;//used for labeling the events
+    map.showSelf();//show map
+    while(player.getHealth()>0)//while the player has not dead
     {
         srand(unsigned(time(0)));
         sense = EventGenerator();//random event
         map.showSelf();
-        if(!operatePlayer(player, sense))//events
+        if(!operatePlayer(player, sense))//trigger the events
         {
             continue;
         }
@@ -67,6 +66,7 @@ int main()
         {
             break;
         }
+	//Save the data in each move
         ofstream fout;//
         fout.open("playerstatus.txt");
         if (fout.fail()){
@@ -160,6 +160,7 @@ int main()
 
         fout.close();
         map.showSelf();
+	//Player Make Choice to Go to Next Position(can also check status or drink potions)
         player.goNextNode();
     }
 
@@ -186,7 +187,7 @@ int main()
 
 
 /////////////////////////////////////////////////////////////////////////
-
+//Initialize the player
 void InitPlayer(Player &player){
 	string indicator;
 	bool done=false;
@@ -311,7 +312,7 @@ void InitPlayer(Player &player){
 	player.ChangeKnowUpgradeWeapon();
 }
 
-
+//Read Previous Record Or Start New Game
 bool ReadFile(Player &player){
 	string indicator;
     cout<<endl<<endl<<"Do You Want To Continue From Previous Game Record?"<<endl<<endl;
@@ -385,7 +386,7 @@ bool ReadFile(Player &player){
 
 
 
-
+//Guide the Player
 void Tutorial(Player &player){
 	int command;
 	cout<<endl<<endl<<endl<<endl<<endl<<endl;
@@ -397,7 +398,7 @@ void Tutorial(Player &player){
 	ClickEnterToContinue();
 	cout<<"You hear raven caws. And then you hear some creepy groan beside you."<<endl<<endl;
 	ClickEnterToContinue();
-	cout<<"You don¡¯t feel right"<<endl<<endl;
+	cout<<"You donÂ¡Â¯t feel right"<<endl<<endl;
 	ClickEnterToContinue();
 	cout<<"\"I have to leave here now!\""<<endl<<endl;
 	cout<<"LEAVE THIS PLACE AND FIND YOUR TEAMMATES !!!"<<endl<<endl;
