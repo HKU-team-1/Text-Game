@@ -1,10 +1,9 @@
 #include<iostream>
 #include<cstdlib>
 #include<string>
-#include <windows.h>
 #include <cstdlib>
 #include <ctime>
-#include<conio.h>
+#include<stdio.h>
 #include <fstream>
 #include "common.h"
 
