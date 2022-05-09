@@ -3,10 +3,9 @@
 #include<iostream>
 #include<cstdlib>
 #include<string>
-#include <windows.h>
 #include <cstdlib>
 #include <ctime>
-#include<conio.h>
+#include<stdio.h>
 #include <fstream>
 using namespace std;
 
@@ -265,7 +264,7 @@ public:
 
 void ClickEnterToContinue(){
     cout<<"Click Any Key to Continue ";
-    getch();
+    getchar();
     cout<<"\r";
     cout<<"                         ";
     cout<<"\r";
@@ -1003,7 +1002,6 @@ int ENEMY_GENERATOR(Player &enemy,int Level){
 	}
 	else{
 		cout<<"ERROR!!!!!!!!"<<endl;
-		Sleep(10000);
 	}
 	return Type;
 }
@@ -1030,7 +1028,6 @@ void ENEMY_MAKE_MOVE(Player &enemy,Player &player,int Type){
 	}
 	else{
 		cout<<"ERROR!!!!!!!!"<<endl;
-		Sleep(10000);
 	}
 }
 
@@ -1546,7 +1543,6 @@ void Player::PlayerMakeMove(){
         Move=MoveIndex;
         cout<<endl<<"CHOICE of YOU: "<<"You choose \""<<Abilities[Move-1]<<"\""<<endl<<endl;
     }
-    Sleep(200);
 }
 
 //where enemy 1 type make move in the battle
@@ -1655,7 +1651,7 @@ void Player::Enemy1MakeMove(Player &player){
     }
 
     cout<<endl<<"CHOICE of "<<Name<<":"<<"Your enemy choose \""<<Abilities[Move-1]<<"\""<<endl<<endl<<endl;
-    Sleep(150);
+
 
 }
 
@@ -1663,7 +1659,7 @@ void Player::Enemy1MakeMove(Player &player){
 //Player Carry Move(In make move they choose a move, in carry move, the move is triggered)
 void Player::PlayerCarryMove(Player &enemy){
     DrawEnergy();
-    Sleep(100);
+
     if(Move==1){
         PlayerAttack(enemy);// move 1
     }
@@ -1692,7 +1688,6 @@ void Player::PlayerCarryMove(Player &enemy){
 	}
     else{
         cout<<"An Error Occurs Please Check the Program"<<endl<<endl;
-        Sleep(10000);
     }
 }
 
@@ -1700,7 +1695,6 @@ void Player::PlayerCarryMove(Player &enemy){
 void Player::EnemyCarryMove(Player &player){
 
     DrawEnergy();
-    Sleep(100);
     if(Move==1){
         EnemyAttack(player);// move 1
     }
@@ -1729,7 +1723,6 @@ void Player::EnemyCarryMove(Player &player){
 	}
     else{
         cout<<"An Error Occurs Please Check the Program"<<endl<<endl;
-        Sleep(10000);
     }
 }
 
