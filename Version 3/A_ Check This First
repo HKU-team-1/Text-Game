@@ -1,0 +1,11 @@
+EgeOfTheWorld.out is compilation made with the linux system
+
+the codes are in "common.h" and "main.cpp"
+
+The Data of The Player are automatically saved in playerstatus.txt.
+
+When you want to terminate the game, just close the window or ctrl+c to end it.
+
+Next time when you want to read the record, input the file name playerstatus.txt
+
+If you want to keep the record, manually change its name after each game, or it will be overwritten next time.
